@@ -1,0 +1,12 @@
+{
+  "name": "blackstone-util",
+  "version": "1.0.0",
+  "description": "Utility functions, classes, and extensions by Blackstone Publishing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Kevin Jantzer",
+  "license": "MIT"
+}
