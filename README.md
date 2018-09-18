@@ -37,7 +37,7 @@ console.log(a) // [1]
 ```js
 import ISBN from 'blackstone-util'
 
-let isbn = ISBN('978-1-5385-0785-8')
+let isbn = new ISBN('978-1-5385-0785-8')
 isbn.isValid
 isbn.to13
 isbn.to10 
@@ -46,3 +46,8 @@ isbn.formatted
 // or static
 ISBN.isValid('978-1-5385-0785-8')
 ```
+
+# Changelog
+
+### v1.1.0
+- `num` in plural() can be an object/array and the number will be retrieved

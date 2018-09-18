@@ -12,6 +12,11 @@
 
 module.exports = function(str, num){
 	
+	if( num instanceof Array )
+		num = num.length
+	if( num instanceof Object )
+		num = Object.keys(num).length
+	
 	var indx = num == 1 ? 1 : 0;
 
 	if( !_.isNumber(num) ){
