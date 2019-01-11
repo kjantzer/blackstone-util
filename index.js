@@ -4,9 +4,8 @@ module.exports = {
 	
 	selectText: require('./selectText'),
 	
-	smartSplit: require('./smartSplit'),
-	
 	metaKey: require('./metaKey'),
+	store: require('./store'),
 
     copyKey(e){
         e = e || event;
@@ -18,17 +17,17 @@ module.exports = {
     },
 	
 	isWin(){
-        return navigator.userAgent.indexOf('Mac OS X') == -1 // FIXME: what about linux?
+        return navigator.userAgent.indexOf('Windows') != -1
     },
 	
-	sortString(str){
-        // strip single and double quotes and titles starting with "The " and "A "
-        return str ? str.replace(/^The |^A |"|“|”|'|‘|’/g, '') : str;
-    },
+	sortString: require('./sortString'),
 	
+	smartSplit: require('./smartSplit'),
+	
+	// DEPRECATED - use smartSplit
 	splitAndTrim: function(str, separator){
         if( !str ) return [];
-        return _.map( (str||'').trim().split(separator||','), function(val){ return val.trim() })
+		return (str||'').trim().split(separator||',').map(val=>val.trim())
     },
 	
 	dateToInteger: function(str){
@@ -38,6 +37,7 @@ module.exports = {
 	formatCurrency: require('./formatCurrency'),
 	
 	numAbbv: require('./numAbbv'),
+	round: require('./round'),
 	
 	nearestHalf(num){ return Number((Math.round(num * 2) / 2).toFixed(2))},
     nearestThird(num){ return Number((Math.round(num * 3) / 3).toFixed(2)) },
@@ -45,7 +45,7 @@ module.exports = {
 	
 	prettyDecimal: require('./prettyDecimal'),
 	
-	randomInt(min, max) {
+	randomInt(min=1, max=1000) {
         return min + Math.floor(Math.random() * (Number(max) - min + 1));
     },
 	

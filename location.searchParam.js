@@ -1,4 +1,8 @@
-
+/*
+	DEPRECATED - there is now a URLSearchParams class
+	
+	https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
+*/
 let searchParam = function(param, defaultVal){
 
 	let params = {}

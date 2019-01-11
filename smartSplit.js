@@ -1,22 +1,25 @@
 /*
-	Smart Split - splits string on comman delimited, tab delimited, or new line
-	https://gist.github.com/kjantzer/3da1d9ce55a658ee4389
+	Smart Split - splits string on comma/pipe delimited, tab delimited, or new line
 */
-module.exports = function(str){
-	var vals = [];
+module.exports = function(str, separator) {
+    var vals = []
 
-	if( str && str.trim )
-		str = str.trim();
+    if (str && str.trim)
+        str = str.trim()
 
-	if( !str ) // empty string, null, false, etc
-		return [];
+    if (!str || typeof str !== 'string') // empty string, null, false, number, etc
+        return vals
 
-	if( str.match(/,/) )
-		vals = str.split(',')
+	if( separator !== undefined )
+        vals = str.split(separator)
+	else if( str.match(/,/) )
+        vals = str.split(',')
+	else if( str.match(/\|/) )
+        vals = str.split('|')
 	else if( str.match(/\t/) )
-		vals = str.split("\t")
+        vals = str.split("\t")
 	else
-		vals = str.split("\n")
+        vals = str.split("\n")
 
-	return _.invoke(vals, 'trim')
+	return vals.map(val=>val.trim())
 }
